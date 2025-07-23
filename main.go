@@ -199,7 +199,7 @@ func main() {
 			if err != nil {
 				log.Printf("error publishing to Redis: %v", err)
 			} else {
-				log.Printf("template with DaaScore %d, Hash %v, AcceptedHash %v, Transactions Length %v published to Redis channel %s", template.Block.Header.DAAScore, template.Block.Header.HashMerkleRoot, template.Block.Header.AcceptedIDMerkleRoot, len(template.Block.Transactions), config.RedisChannel)
+				log.Printf("template - DaaScore %d, Hash %v, AcceptedHash %v, Trxn Len %v published to Redis %s", template.Block.Header.DAAScore, template.Block.Header.HashMerkleRoot[:16]+"...", template.Block.Header.AcceptedIDMerkleRoot[:16]+"...", len(template.Block.Transactions), config.RedisChannel)
 			}
 
 			time.Sleep(ksAPI.blockWaitTime)
